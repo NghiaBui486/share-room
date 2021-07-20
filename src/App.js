@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from 'react';
+import NotFound from './components/NotFound';
+import { BrowserRouter, Switch, Route, Link, Redirect } from 'react-router-dom';
+import { Spin } from 'antd';
+import './App.scss';
+import "antd/dist/antd.css";
+import UserLogin from './features/Login';
+import AdminDashboard from './features/AdminDashboard';
+
+//Lazy loading
+const ShareRoom = React.lazy(()=> import('./features/ShareRoom'));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Suspense fallback={<div className="app__spin"><Spin tip="Loading..."/></div>}>
+          <BrowserRouter>
+
+          <Switch>
+            <Redirect exact from="/" to="/share-room" />
+
+            <Route path="/share-room" component={ShareRoom} />
+            <Route path="/user-login" component={UserLogin} />
+            <Route path="/admin-dashboard" component={AdminDashboard} />
+            <Route component={NotFound} />
+
+          </Switch>
+        </BrowserRouter>
+      </Suspense>
     </div>
   );
 }
