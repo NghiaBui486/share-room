@@ -14,7 +14,7 @@ function UserRegister(props) {
 
   return (
     <>
-      <div className="wrapper-Register">
+      <div className="wrapper-register">
         <Row>
           <Col className="content-left" span={14}>
             <div className="content-left__title">
