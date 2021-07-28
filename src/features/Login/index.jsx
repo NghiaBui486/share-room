@@ -9,6 +9,9 @@ function UserLogin() {
   const redirectRegiter = () => {
     history.push("/user-register");
   };
+  const redirectHomePage = () => {
+    history.push("/");
+  }
   return (
     <>
       <div className="wrapper-login">
@@ -41,7 +44,7 @@ function UserLogin() {
               <h1>WE CANT DO IT</h1>
             </div>
             <div>
-              <picture>
+              <picture onClick={redirectHomePage}>
                 <source
                   width="500px"
                   media="(min-width: 1125px)"

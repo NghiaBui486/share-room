@@ -6,11 +6,13 @@ import logo from "../../assets/images/logo.png";
 
 function UserRegister(props) {
   const { Option } = Select;
-
   let history = useHistory();
   const redirectLogin = () => {
     history.push("/user-login");
   };
+  const redirectHomePage = () => {
+    history.push("/");
+  }
 
   return (
     <>
@@ -21,7 +23,7 @@ function UserRegister(props) {
               <h1>WE CANT DO IT</h1>
             </div>
             <div>
-              <picture>
+              <picture onClick={redirectHomePage}>
                 <source
                   width="500px"
                   media="(min-width: 1125px)"
