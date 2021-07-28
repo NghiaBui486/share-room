@@ -1,6 +1,6 @@
 import React from "react";
-import { Form, Input, Button, Row, Col, Space, Select } from "antd";
 import { useHistory } from "react-router-dom";
+import { Form, Input, Button, Row, Col, Space, Select } from "antd";
 import "./index.scss";
 import logo from "../../assets/images/logo.png";
 
@@ -12,28 +12,12 @@ function UserRegister(props) {
     history.push("/user-login");
   };
 
-  const layout = {
-    labelCol: {
-      span: 6,
-    },
-    wrapperCol: {
-      span: 19,
-    },
-  };
-
-  const tailLayout = {
-    wrapperCol: {
-      offset: 7,
-      span: 17,
-    },
-  };
-
   return (
     <>
-      <div className="wrapper_Register">
+      <div className="wrapper-Register">
         <Row>
-          <Col className="content_left" span={14}>
-            <div className="content_title">
+          <Col className="content-left" span={14}>
+            <div className="content-left__title">
               <h1>WE CANT DO IT</h1>
             </div>
             <div>
@@ -52,9 +36,9 @@ function UserRegister(props) {
               </picture>
             </div>
           </Col>
-          <Col className="form_right" span={10}>
+          <Col className="form-right" span={10}>
             <div>
-              <div className="form_content">
+              <div className="form-right__content">
                 <h1>Register In Free</h1>
               </div>
               <div>

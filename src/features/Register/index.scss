@@ -2,26 +2,28 @@ body{
     background-color: #f0f2f5;
 }
 
-.wrapper_Register {
+.wrapper-Register {
     margin: 0px auto;
     padding: 15px 140px 0px 140px;
-    .form_right{
-        background-color: #ffffff;
-        padding: 0px 100px 60px 30px;
-        .form_content h1{
-            color: #3278e4;
-            margin: 80px 20px 40px 0px;
-        }
+}
+
+.form-right{
+    background-color: #ffffff;
+    padding: 0px 100px 60px 30px;
+    &__content h1{
+        color: #3278e4;
+        margin: 80px 20px 40px 0px;
     }
-    .content_left{
-        background-color: #b6d7a8;
-        text-align: center;
-        .content_title h1{
-            color: #ffffff;
-            padding-top: 50px;
-        }
-        img{
-            margin-top: 180px;
-        }
+}
+
+.content-left{
+    background-color: #b6d7a8;
+    text-align: center;
+    &__title h1{
+        color: #ffffff;
+        padding-top: 50px;
+    }
+    img{
+        margin-top: 180px;
     }
 }

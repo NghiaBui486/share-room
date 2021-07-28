@@ -1,23 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
+import { useHistory } from "react-router-dom";
 import { Form, Input, Button, Row, Col, Space } from "antd";
-import { useHistory } from "react-router-dom"
 import "./index.scss";
-import logo from "../../assets/images/logo.png";
+import images from "../../contants/images";
 
 function UserLogin() {
   let history = useHistory();
   const redirectRegiter = () => {
-    history.push("/user-register")
-
-  }
-
+    history.push("/user-register");
+  };
   return (
     <>
-      <div className="wrapper_Login">
+      <div className="wrapper-login">
         <Row>
-          <Col className="form_left" span={10}>
+          <Col className="form-left" span={10}>
             <div>
-              <div className="form_content">
+              <div className="form-left__content">
                 <h1>Sign In Free</h1>
               </div>
               <div>
@@ -38,8 +36,8 @@ function UserLogin() {
               </div>
             </div>
           </Col>
-          <Col className="content_right" span={14}>
-            <div className="content_title">
+          <Col className="content-right" span={14}>
+            <div className="content-right__title">
               <h1>WE CANT DO IT</h1>
             </div>
             <div>
@@ -47,14 +45,14 @@ function UserLogin() {
                 <source
                   width="500px"
                   media="(min-width: 1125px)"
-                  srcset={logo}
+                  srcset={images.LOGO}
                 />
                 <source
                   width="290px"
                   media="(min-width: 641px)"
-                  srcset={logo}
+                  srcset={images.LOGO}
                 />
-                <img width="500px" src={logo} />
+                <img width="500px" src={images.LOGO} />
               </picture>
             </div>
           </Col>
