@@ -54,10 +54,14 @@
 .sub-func{
     text-align: center;
     margin-top: 12px;
+    
     &__login{
         font-size: 16px;
-         margin-right: 40px; 
-         cursor: pointer;
-         font-weight: bold;
+        margin-right: 60px; 
+        cursor: pointer;
+        color: #ffffff;
+    }
+    &__login:hover{
+        color: blue;
     }
 }
