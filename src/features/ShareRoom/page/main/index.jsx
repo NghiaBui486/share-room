@@ -1,6 +1,8 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { Button } from "antd";
+import Header from "../../../../components/Header"
+import Footer from "../../../../components/Footer"
+
 
 function MainPage() {
   let history = useHistory();
@@ -9,10 +11,10 @@ function MainPage() {
   };
 
   return (
-    <div style={{textAlign: "center", marginTop: 100}}>
-      <Button type="primary" onClick={redirectLogin}>
-        Redirect Login
-      </Button>
+    <div className="wrapper-home">
+      <Header />
+      <div style={{height: 200}}></div>
+      <Footer />
     </div>
   );
 }
