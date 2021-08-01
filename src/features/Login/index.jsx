@@ -20,8 +20,7 @@ function UserLogin() {
   const redirectHomePage = () => {
     history.push("/");
   };
-  // Handle login:
-  const onFinish = () => {
+  const handleLogin = () => {
     const passwordDB = window.btoa(userName + ":" + password);
     const inFo = {
       username: userName,
@@ -51,7 +50,7 @@ function UserLogin() {
                 <h1>Sign In Free</h1>
               </div>
               <div>
-                <Form onFinish={onFinish} layout="vertical">
+                <Form onFinish={handleLogin} layout="vertical">
                   <Form.Item
                     label="Username"
                     name="userName"

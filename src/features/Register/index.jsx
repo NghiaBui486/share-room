@@ -23,8 +23,7 @@ function UserRegister(props) {
   const redirectHomePage = () => {
     history.push("/");
   };
-  // Handle register
-  const onFinish = () => {
+  const handleRegister = () => {
     const inFo = {
       userName: userName,
       password: password,
@@ -72,7 +71,7 @@ function UserRegister(props) {
                 <h1>Register In Free</h1>
               </div>
               <div>
-                <Form onFinish={onFinish} layout="vertical">
+                <Form onFinish={handleRegister} layout="vertical">
                   <Form.Item
                     label="Username"
                     name="userName"
