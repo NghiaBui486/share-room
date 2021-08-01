@@ -23,7 +23,7 @@ function UserRegister(props) {
   const redirectHomePage = () => {
     history.push("/");
   };
-  //---handler register
+  // Handle register
   const onFinish = () => {
     const inFo = {
       userName: userName,

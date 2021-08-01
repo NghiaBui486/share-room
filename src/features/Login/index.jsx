@@ -20,7 +20,7 @@ function UserLogin() {
   const redirectHomePage = () => {
     history.push("/");
   };
-  //---handler login
+  // Handle login:
   const onFinish = () => {
     const passwordDB = window.btoa(userName + ":" + password);
     const inFo = {
