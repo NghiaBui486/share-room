@@ -24,8 +24,8 @@ function Header() {
             </Col>
             <Col span={17} className="content__label">
               <Space direction="vertical">
-                <b style={{ color: "#2b78e4" }}>Phòng trọ giá tốt</b>
-                <b style={{ color: "#cc352c" }}>Tin tức phòng trọ sinh viên</b>
+                <b style={{ color: "#aeeb34" }}>PHÒNG TRỌ GIÁ TỐT</b>
+                <b style={{ color: "#aeeb34" }}>Tin tức phòng trọ sinh viên</b>
               </Space>
             </Col>
           </Row>
