@@ -1,0 +1,30 @@
+body{
+    background-color: #f0f2f5;
+}
+
+.wrapper-login {
+    margin: 0px auto;
+    padding: 70px 140px 60px 140px;
+}
+
+.form-left{
+    background-color: #ffffff;
+    padding: 10px 100px 60px 30px;
+    &__content h1{
+        color: #3278e4;
+        margin: 100px 20px 70px 0px;
+    }
+}
+
+.content-right{
+    background-color: #b6d7a8;
+    text-align: center;
+    &__title h1{
+        color: #ffffff;
+        padding-top: 50px;
+    }
+    img{
+        margin-top: 100px;
+        cursor: pointer;
+    }
+}
