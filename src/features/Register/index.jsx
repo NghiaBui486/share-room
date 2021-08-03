@@ -1,6 +1,15 @@
 import React, { useState, useMemo } from "react";
 import { useHistory } from "react-router-dom";
-import { Form, Input, Button, Row, Col, Space, Select } from "antd";
+import {
+  Form,
+  Input,
+  Button,
+  Row,
+  Col,
+  Space,
+  Select,
+  notification,
+} from "antd";
 import "./index.scss";
 import logo from "../../assets/images/logo.png";
 import userApi from "../../api/userApi";
@@ -33,11 +42,17 @@ function UserRegister(props) {
     };
     userApi
       .register(inFo)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
+        notification["success"]({
+          message: "Localhost say:",
+          description: "Đăng ký thành công",
+        });
+        setTimeout(() => {
+          history.push("/user-login");
+        }, 1000);
       })
       .catch(() => {
-        console.log("Tai Khoan Khong Ton Tai");
+        console.log("ERROR");
       });
   };
 
@@ -200,8 +215,8 @@ function UserRegister(props) {
                       }}
                       placeholder="Please choose account type"
                     >
-                      <Select.Option value="2">Owner</Select.Option>
-                      <Select.Option value="3">User</Select.Option>
+                      <Select.Option value="1">Owner</Select.Option>
+                      <Select.Option value="2">User</Select.Option>
                     </Select>
                   </Form.Item>
                   <Form.Item>
