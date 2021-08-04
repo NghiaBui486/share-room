@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, useHistory } from "react-router-dom";
 import { Row, Col, Space, Input, Button } from "antd";
 import {
   HomeOutlined,
@@ -9,11 +9,57 @@ import {
   FilterFilled,
   SearchOutlined,
   FormOutlined,
+  LoginOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
 import "./index.scss";
 import images from "../../contants/images";
 
 function Header() {
+  let history = useHistory();
+  const clearToken = () => {
+    localStorage.clear();
+    history.push("/");
+  };
+  //Check fullname
+  const checkName = () => {
+    if (localStorage.getItem("name")) {
+      return (
+        <>
+          <li>
+            <Link
+              className="link"
+              to="/user-login"
+              style={{
+                overflowX: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+                width: 90,
+                display: "inline-block",
+              }}
+            >
+              <UserOutlined style={{ fontSize: 20 }} />{" "}
+              {localStorage.getItem("name")}
+            </Link>
+          </li>
+          <li>
+            <Link className="link" onClick={clearToken}>
+              <LogoutOutlined style={{ fontSize: 20 }} /> Đăng xuất
+            </Link>
+          </li>
+        </>
+      );
+    } else {
+      return (
+        <li style={{ width: 235 }}>
+          <Link className="link" to="/user-login">
+            <LoginOutlined style={{ fontSize: 20 }} /> Đăng nhập
+          </Link>
+        </li>
+      );
+    }
+  };
+
   return (
     <div className="wrapper-header">
       <Row align="bottom">
@@ -24,8 +70,8 @@ function Header() {
             </Col>
             <Col span={17} className="content__label">
               <Space direction="vertical">
-                <b style={{ color: "#aeeb34" }}>PHÒNG TRỌ GIÁ TỐT</b>
-                <b style={{ color: "#aeeb34" }}>Tin tức phòng trọ sinh viên</b>
+                <b style={{ color: "gold" }}>Phòng trọ giá tốt</b>
+                <b style={{ color: "red" }}>Tin tức phòng trọ sinh viên</b>
               </Space>
             </Col>
           </Row>
@@ -77,16 +123,14 @@ function Header() {
             />
           </Col>
           <Col span={9} className="sub-func">
-            <Space size="large">
-              <Link className="sub-func__login" to="user-login">
-                <UserOutlined style={{ color: "#ffffff" }} />
-                &nbsp; Đăng nhập
-              </Link>
-              <Button type="primary" danger>
-                <FormOutlined />
-                &nbsp; Đăng tin
-              </Button>
-            </Space>
+            <ul>
+              {checkName()}
+              <li>
+                <Button type="primary" danger>
+                  <FormOutlined /> Đăng tin
+                </Button>
+              </li>
+            </ul>
           </Col>
         </Row>
       </div>

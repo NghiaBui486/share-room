@@ -17,7 +17,7 @@
 
 .menu{
     ul{
-        background-color: #93c47d;
+        background-color: #0b7143;
         list-style-type: none;
         text-align: center;
         width: 100%;
@@ -34,7 +34,7 @@
             font-size: 16px;
         }
         .link:hover{
-            color: black;
+            color: #40a9ff;
             cursor: pointer;
         }
     }
@@ -52,16 +52,26 @@
 }
 
 .sub-func{
-    text-align: center;
-    margin-top: 12px;
-    
-    &__login{
-        font-size: 16px;
-        margin-right: 60px; 
-        cursor: pointer;
-        color: #ffffff;
+    ul{
+        background-color: #0b7143;
+        list-style-type: none;
+        text-align: center;
+        width: 100%;
+        margin-top: 12px;
     }
-    &__login:hover{
-        color: blue;
+    li{
+        float: left;
+        width: 120px;
+        height: 40px;
+        line-height: 40px;
+        color: white;
+        .link{
+            color: #f1f1f1;
+            font-size: 16px;
+        }
+        .link:hover{
+            color: #40a9ff;
+            cursor: pointer;
+        }
     }
 }
