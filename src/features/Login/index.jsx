@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { useHistory } from "react-router-dom";
-import { Form, Input, Button, Row, Col, Space } from "antd";
+import { Form, Input, Button, Row, Col, Space, notification } from "antd";
 import "./index.scss";
 import images from "../../contants/images";
 import userApi from "../../api/userApi";
@@ -36,7 +36,10 @@ function UserLogin() {
         }
       })
       .catch(() => {
-        console.log("Tai Khoan Khong Ton Tai");
+        notification["error"]({
+          message: "Localhost say:",
+          description: "Tài khoản hoặc mật khẩu không chính xác",
+        });
       });
   };
 
