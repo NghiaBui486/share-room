@@ -15,17 +15,15 @@ const { Option, OptGroup } = Select;
 
   
 
-  class Filter extends React.Component {
-      render(){
-   // const [select_1, setSeLect_1] = useState("Loại phòng");
+  function Filter(){
     return (
 
-        <Row className="type_room" justify="space-between">
+        <Row className="filter-room" justify="space-between">
             <Space size='small'>
-            <Col span={4} className="btn_filter" > 
+            <Col span={4} className="filter-room__btn" > 
                 <Button>Lọc <FilterOutlined /> </Button>
             </Col>
-             <Col span={8}  className="select_item" >
+             <Col span={8}  className="filter-room__type" >
              <Select defaultValue="Phòng trọ, nhà trọ"  onChange={handleChange}> 
                  <Option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</Option>
                  <Option value="Nhà nguyên căn">Nhà nguyên căn</Option>
@@ -63,6 +61,4 @@ const { Option, OptGroup } = Select;
 
         )
 }
-  }
-
 export default Filter;
