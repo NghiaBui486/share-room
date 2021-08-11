@@ -215,6 +215,7 @@ function UserRegister(props) {
                       }}
                       placeholder="Please choose account type"
                     >
+                      <Select.Option value="0">Admin</Select.Option>
                       <Select.Option value="1">Owner</Select.Option>
                       <Select.Option value="2">User</Select.Option>
                     </Select>
