@@ -1,46 +1,40 @@
 import React from "react";
-import { useHistory } from "react-router-dom"
-import Header from "../../../../components/Header"
-import Footer from "../../../../components/Footer"
-import Filter from "../../../../features/ShareRoom/page/filter"
-import ListPost  from "../../page/list"
-import New from "../../page/new"
-import { Row, Col, Space } from "antd"
-import Category from "../../page/category"
+import { useHistory } from "react-router-dom";
+import { Layout } from 'antd';
+
+import AppHeader from "../../../../components/Header";
+import AppFooter from "../../../../components/Footer";
+import AppCarousel from "../../../../features/ShareRoom/page/carousel";
+import AppAbout from "../../../../features/ShareRoom/page/about";
+import ApRooms from "../../../../features/ShareRoom/page/rooms";
+import AppContact from "../../../../features/ShareRoom/page/contact";
+import AppNews from "../../../../features/ShareRoom/page/news";
+
+const { Header, Content, Footer } = Layout;
 
 function MainPage() {
-  let history = useHistory();
-  const redirectLogin = () => {
-    history.push("/user-login");
-  };
-
-  return (
-    <div className="wrapper-home">
-      
-      <Header/>
-      <div style={{height:20}}></div>
-      
-      <div className='wrapper-home__content'>
-        <Row>
-        <Filter/>
-        </Row>
-
-        <Row>
-        <Col span='13' offset={2}> 
-            <ListPost />
-        </Col>
-
-        <Col span='7' offset={1} > 
-           <New/>
-           <Category/>
-        </Col>
-        </Row>
-      </div>
-        
-      <Footer />
-  
-    </div>
-  );
-}
+    return (
+      <Layout className="mainLayout">
+        <Header>
+          <AppHeader/>
+        </Header>
+        <Content>
+        <div className="main">
+          <AppCarousel/>
+          <AppAbout/>
+          <AppNews/>
+          <ApRooms/>
+          {/* <AppWorks/>
+          <AppFaq/>
+          <AppPricing/>*/}
+          <AppContact/> 
+        </div>
+        </Content>
+        <Footer>
+          <AppFooter/>  
+        </Footer>      
+      </Layout>
+    );
+  }
 
 export default MainPage;
