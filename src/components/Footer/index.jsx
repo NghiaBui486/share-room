@@ -1,64 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Row, Col, Space } from "antd";
-import {
-  FacebookOutlined,
-  YoutubeOutlined,
-  GooglePlusOutlined,
-} from "@ant-design/icons";
-import "./index.scss";
+import { BackTop } from 'antd';
 
 function Footer() {
   return (
-    <div className="wrapper-footer">
-      <Row>
-        <Col className="column" span={6}>
-          <p style={{ fontSize: 20 }}>CHÍNH SÁCH BẢO MẬT</p>
-          <p>
-            <Link className="column__link" to="/">An toàn mua bán</Link>
-          </p>
-          <p>
-            <Link className="column__link" to="/">Quy định cần thiết</Link>
-          </p>
-          <p>
-            <Link className="column__link" to="/">Chính sách riêng tư</Link>
-          </p>
-        </Col>
-        <Col className="column" span={6}>
-          <p style={{ fontSize: 20 }}>HỖ TRỢ KHÁCH HÀNG</p>
-          <p>
-            <Link className="column__link" to="/">Trung tâm trợ giúp</Link>
-          </p>
-          <p>
-            <Link className="column__link" to="/">Liên hệ hỗ trợ</Link>
-          </p>
-          <p>
-            <Link className="column__link" to="/">Hotline: 0963858xxx</Link>
-          </p>
-        </Col>
-        <Col className="column" span={6}>
-          <p style={{ fontSize: 20 }}>VỀ CHÚNG TÔI</p>
-          <p>
-            <Link className="column__link" to="/">Giới thiệu</Link>
-          </p>
-          <p>
-            <Link className="column__link" to="/">Tuyển dụng</Link>
-          </p>
-          <p>
-            <Link className="column__link" to="/">Truyền thông</Link>
-          </p>
-        </Col>
-        <Col className="column" span={6}>
-          <p style={{ fontSize: 20 }}>LIÊN KẾT</p>
-          <p>
-            <Space size="middle">
-              <Link to="/" className="column__link"><FacebookOutlined style={{ fontSize: 30 }} /></Link>
-              <Link to="/" className="column__link"><YoutubeOutlined style={{ fontSize: 30 }} /></Link>
-              <Link to="/" className="column__link"><GooglePlusOutlined style={{ fontSize: 30 }} /></Link>
-            </Space>
-          </p>
-        </Col>
-      </Row>
+    <div className="container-fluid">
+      <div className="footer">
+        <div className="logo">
+          <i className="fas fa-bolt"></i>
+          <a href="http://google.com">Phòng trọ nhanh cho sinh viên</a>
+        </div>
+        <ul className="socials">
+          <li><a href="https://www.facebook.com/"><i className="fab fa-facebook-f"></i></a></li>
+          <li><a href="https://www.twitter.com/"><i className="fab fa-twitter"></i></a></li>
+          <li><a href="https://www.linkedin.com/"><i className="fab fa-linkedin-in"></i></a></li>
+          <li><a href="https://www.pinterest.com/"><i className="fab fa-pinterest-p"></i></a></li>
+          <li><a href="https://www.instagram.com/"><i className="fab fa-instagram"></i></a></li>
+        </ul>
+        <div className="copyright">Copyright &copy; 2021 Developer Batch 7</div>
+        <BackTop>
+          <div className="goTop"><i className="fas fa-arrow-circle-up"></i></div>
+        </BackTop>
+      </div>
     </div>
   );
 }
