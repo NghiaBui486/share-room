@@ -29,6 +29,7 @@ function UserLogin() {
     userApi
       .authenticate(inFo)
       .then((res) => {
+        console.log(res)
         if (res.role === "User" || res.role === "Owner") {
           if (res.token) {
             localStorage.setItem("token", res.token);
