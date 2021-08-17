@@ -1,11 +1,10 @@
 import React,{ useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 
-import data from '../data.json';
 import Filter from "../../../../features/ShareRoom/page/filter";
 import roomInfoApi from "../../../../api/roomInfoApi";
 
-import { Row, Col, Card, Space,Avatar, Pagination } from 'antd';
+import { Row, Col, Card, Space, Avatar, Pagination } from 'antd';
 const { Meta } = Card;
 
 function AppRooms() {
@@ -18,7 +17,16 @@ const [address, setAddress] = useState('');
 const [cost, setCost] = useState('');
 const [check,setCheck] = useState(true);
 
-const handleChange = value => {
+
+const [data,setData]=useState([]);
+
+const getData=()=>{
+  roomInfoApi.getAll().then((res) => { setData(res)})
+}
+useEffect(()=>{getData();}, [])
+
+
+const checkPagination = value => {
     if (value <= 1) {
         setMin(0)
         setMax(6)
@@ -36,7 +44,6 @@ const handleRoomDetail = id => {
     }
   )
 }
-
 
 const getNews = () => {
     return (
@@ -83,12 +90,11 @@ const getNews = () => {
       maxCost=2;
     }
   }
-
  
-  const FilterToRoom = (Type,Address,Cost) => {
-   setType(Type);
-   setAddress(Address);
-   setCost(Cost);
+  const callDataFromFilter = (itemType, itemAddress, itemPrice) => {
+   setType(itemType); 
+   setAddress(itemAddress);
+   setCost(itemPrice);
    setCheck(false);
   }
 
@@ -134,17 +140,6 @@ const getNews = () => {
     }
 
   }
- 
-/* 
-const [data,setData]=useState([]);
-
-const getData=()=>{
-  roomInfoApi.getAll().then((res) => {console.log(res)
-  setData(res)})
-}
-useEffect(()=>{getData();}, [])
-*/
-
 
   return (
     
@@ -154,19 +149,19 @@ useEffect(()=>{getData();}, [])
           <h2>Phòng trọ với giá tốt nhất</h2>
         </div>
         <Space direction="vertical" size="large">
-          <Filter handleGetRoom={FilterToRoom}/>
+          <Filter passDataToRoom={callDataFromFilter}/>
           <Row gutter={[16, 16]}>
           {(() => {
-        if (check) {
-          return (
-            getNews()
-          )
-        } else {
-          return (
-            getFilter()
-          )
-        }
-      })()}
+            if (check) {
+              return (
+                getNews()
+              )
+            } else {
+              return (
+                getFilter()
+              )
+            }
+          })()}
           </Row>
           <Row gutter={[16, 16]}>
             <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
@@ -179,7 +174,7 @@ useEffect(()=>{getData();}, [])
               <Pagination
                defaultCurrent={1}
                pageSize={6} 
-               onChange={handleChange}
+               onChange={checkPagination}
                total={10}             
               />
             </Col>
