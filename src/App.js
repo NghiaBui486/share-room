@@ -8,6 +8,7 @@ import Register from "./features/Register";
 import UserLogout from "./features/Logout";
 import AdminDashboard from "./features/AdminDashboard";
 import NotFound from "./components/NotFound";
+import DetailRoom from "./features/ShareRoom/detail/main/index.jsx"
 
 //Lazy loading
 const ShareRoom = React.lazy(() => import("./features/ShareRoom"));
@@ -30,6 +31,7 @@ function App() {
             <Route path="/user-logout" component={UserLogout} />
             <Route path="/user-register" component={Register} />
             <Route path="/admin-dashboard" component={AdminDashboard} />
+            <Route path="/room-detail" component={DetailRoom} />
             <Route component={NotFound} />
           </Switch>
         </BrowserRouter>

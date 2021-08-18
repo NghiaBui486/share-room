@@ -9,6 +9,7 @@ import AppComment from "../comment"
 import AppDescribe from "../describe"
 import AppInforUser from "../inforUser"
 import AppState from "../state"
+import './../../index.scss';
 
 const { Header, Content, Footer } = Layout;
 
