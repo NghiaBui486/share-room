@@ -10,7 +10,6 @@ function ShareRoom() {
   return (
     <Switch>
       <Route exact path={match.url} component={MainPage} />
-
       <Route component={NotFound} />
     </Switch>
   );
