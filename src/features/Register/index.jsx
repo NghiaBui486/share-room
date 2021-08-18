@@ -38,6 +38,11 @@ function UserRegister(props) {
       password: password,
       name: fullName,
       email: email,
+      address: "",
+      phone: "",
+      birthDate: "",
+      gender: "",
+      avatarUrl: "",
       role: role,
     };
     userApi
@@ -52,7 +57,10 @@ function UserRegister(props) {
         }, 1000);
       })
       .catch(() => {
-        console.log("ERROR");
+        notification["success"]({
+          message: "Localhost say:",
+          description: "Password hoặc Email không hợp lệ",
+        });
       });
   };
 
@@ -116,10 +124,6 @@ function UserRegister(props) {
                         required: true,
                         message: "Password không được để trống",
                       },
-                      {
-                        pattern: new RegExp(/^[a-zA-Z0-9]+$/i),
-                        message: "Mật khẩu không chứa kí tự đặc biệt",
-                      },
                     ]}
                     hasFeedback
                   >
@@ -127,7 +131,7 @@ function UserRegister(props) {
                       onChange={(e) => {
                         setPassword(e.target.value);
                       }}
-                      placeholder="Password"
+                      placeholder="Password (Ex: User123@)"
                     />
                   </Form.Item>
                   <Form.Item
@@ -138,10 +142,6 @@ function UserRegister(props) {
                       {
                         required: true,
                         message: "Password không được để trống",
-                      },
-                      {
-                        pattern: new RegExp(/^[a-zA-Z0-9]+$/i),
-                        message: "Mật khẩu không chứa kí tự đặc biệt",
                       },
                       ({ getFieldValue }) => ({
                         validator(_, value) {

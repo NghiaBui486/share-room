@@ -29,11 +29,11 @@ function UserLogin() {
     userApi
       .authenticate(inFo)
       .then((res) => {
-        console.log(res)
         if (res.role === "User" || res.role === "Owner") {
           if (res.token) {
             localStorage.setItem("token", res.token);
             localStorage.setItem("name", res.name);
+            localStorage.setItem("userId", res.userId);
             history.push("/");
           }
         } else if (res.role === "Admin") {
@@ -96,10 +96,6 @@ function UserLogin() {
                       {
                         required: true,
                         message: "Password không được để trống",
-                      },
-                      {
-                        pattern: new RegExp(/^[a-zA-Z0-9]+$/i),
-                        message: "Mật khẩu không chứa kí tự đặc biệt",
                       },
                     ]}
                   >
