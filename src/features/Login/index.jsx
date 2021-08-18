@@ -29,10 +29,24 @@ function UserLogin() {
     userApi
       .authenticate(inFo)
       .then((res) => {
-        if (res.token) {
-          localStorage.setItem("token", res.token);
-          localStorage.setItem("name", res.name);
-          history.push("/");
+        if (res.role === "User" || res.role === "Owner") {
+          if (res.token) {
+            localStorage.setItem("token", res.token);
+            localStorage.setItem("name", res.name);
+            localStorage.setItem("userId", res.userId);
+            history.push("/");
+          }
+        } else if (res.role === "Admin") {
+          if (res.token) {
+            localStorage.setItem("token", res.token);
+            localStorage.setItem("name", res.name);
+            history.push("/admin-dashboard");
+          }
+        } else {
+          notification["error"]({
+            message: "Localhost say:",
+            description: "Tài khoản hoặc mật khẩu không chính xác",
+          });
         }
       })
       .catch(() => {
@@ -82,10 +96,6 @@ function UserLogin() {
                       {
                         required: true,
                         message: "Password không được để trống",
-                      },
-                      {
-                        pattern: new RegExp(/^[a-zA-Z0-9]+$/i),
-                        message: "Mật khẩu không chứa kí tự đặc biệt",
                       },
                     ]}
                   >

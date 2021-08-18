@@ -5,6 +5,7 @@ import "antd/dist/antd.css";
 import "./App.scss";
 import UserLogin from "./features/Login";
 import Register from "./features/Register";
+import UserLogout from "./features/Logout";
 import AdminDashboard from "./features/AdminDashboard";
 import NotFound from "./components/NotFound";
 
@@ -26,6 +27,7 @@ function App() {
             <Redirect exact from="/" to="/share-room" />
             <Route path="/share-room" component={ShareRoom} />
             <Route path="/user-login" component={UserLogin} />
+            <Route path="/user-logout" component={UserLogout} />
             <Route path="/user-register" component={Register} />
             <Route path="/admin-dashboard" component={AdminDashboard} />
             <Route component={NotFound} />
