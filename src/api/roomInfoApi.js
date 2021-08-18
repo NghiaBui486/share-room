@@ -9,6 +9,21 @@ const roomInfoApi = {
       },
     });
   },
-};
-
+  getAll: () => {
+    const url = '/room';
+    return axiosClient.get(url, {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+    });
+  },
+  getInfoRoom: (id) => {
+    const url = '/room/${id}';
+    return axiosClient.get(url, {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+    });
+  }
+}
 export default roomInfoApi;

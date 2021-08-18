@@ -1,36 +1,61 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect,useState } from "react";
 import { Select, Button, Row, Col, Space} from 'antd';
-import { FilterOutlined, } from '@ant-design/icons';
+import { FilterOutlined } from '@ant-design/icons';
 import './../../index.scss';
-  
 
 const { Option, OptGroup } = Select;
 
-  function handleChange(value) {
-   
-    console.log(`selected ${value}`);
-  }
-
-
-  
-
-  function Filter(){
+  function Filter({ passDataToRoom }) {
+    const [itemType, setType] = useState("Room");
+    const [itemAddress, setAddress] = useState("Bình Định");
+    const [itemPrice, setPrice] = useState("type2");
+    const checkType = (value) => {
+        if (value!= undefined) {
+            setType(value);
+        }
+        else {
+            setType("Room");
+        }
+       };
+    const checkAddress = (value) => {
+        if (value!= undefined) {
+            setAddress(value);
+        }
+        else {
+            setAddress("Bình Định");
+        }
+       };
+    const checkPrice = (value) => {
+        if (value!= undefined) {
+            setPrice(value);
+        }
+        else {
+            setPrice("type2");
+        }
+       };
+    
+    useEffect(() => {
+        checkType();
+        checkAddress();
+        checkPrice();        
+      }, []);   
+      
     return (
 
         <Row className="filter-room" justify="space-between">
             <Space size='small'>
             <Col span={4} className="filter-room__btn" > 
-                <Button>Lọc <FilterOutlined /> </Button>
+                <Button onClick={() =>passDataToRoom(itemType,itemAddress,itemPrice)}
+                >Lọc <FilterOutlined /> </Button>
             </Col>
              <Col span={8}  className="filter-room__type" >
-             <Select defaultValue="Phòng trọ, nhà trọ"  onChange={handleChange}> 
-                 <Option value="Phòng trọ, nhà trọ">Phòng trọ, nhà trọ</Option>
-                 <Option value="Nhà nguyên căn">Nhà nguyên căn</Option>
+             <Select defaultValue="Room"  onSelect={checkType}> 
+                 <Option value="Room">Phòng trọ, nhà trọ</Option>
+                 <Option value="House">Nhà nguyên căn</Option>
             </Select>
              </Col>
              <Col span={7}  >
-             <Select defaultValue="Hà Nội" style={{width:150 }}  className="select_item" onChange={handleChange}>
+             <Select defaultValue="Hà Nội" style={{width:150 }}  className="select_item" onSelect={checkAddress}>
                     <OptGroup label="Khu vực miền Bắc">
                         <Option value="Hà Nội">Hà Nội</Option>
                         <Option value="Hải Phòng">Hải Phòng</Option>
@@ -46,19 +71,15 @@ const { Option, OptGroup } = Select;
                 </Select>
              </Col>
              <Col span={5} >
-             <Select defaultValue="1tr - 1tr500"  onChange={handleChange} className="select_item"> 
-                 <Option value="1tr - 1tr500">1tr - 1tr500</Option>
-                 <Option value="800k - 1tr">800k - 1tr</Option>
-                 <Option value="500k - 800k">500k - 800k</Option>
+             <Select defaultValue="type2"  onSelect={checkPrice} className="select_item"> 
+                 <Option value="type1">3tr - 5tr</Option>
+                 <Option value="type2">2tr - 3tr</Option>
+                 <Option value="type3">1tr - 2tr</Option>
             </Select>
              </Col>
              </Space>
 
         </Row>
-
-       
-        
-
         )
 }
 export default Filter;
