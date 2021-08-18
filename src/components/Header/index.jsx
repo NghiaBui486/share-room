@@ -76,9 +76,16 @@ function Header() {
   const onSubmit = () => {
     const promises = listUrl.map((file) => {
       const ref = storage.ref("images").child(file.name);
-      return ref.put(file.uploadTask).then(async () => {
-        const url = await ref.getDownloadURL();
-        return { name: file.name, url, type: "Image" };
+      return ref.put(file).then(async () => {
+        let urlImage = "";
+        await storage
+          .ref("images")
+          .child(file.name)
+          .getDownloadURL()
+          .then((url) => {
+            urlImage = url;
+          });
+        return { name: file.name, url: urlImage, type: "Image" };
       });
     });
     Promise.all(promises)
