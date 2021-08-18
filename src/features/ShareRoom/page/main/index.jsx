@@ -1,7 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import { Layout } from 'antd';
-
 import AppHeader from "../../../../components/Header";
 import AppFooter from "../../../../components/Footer";
 import AppCarousel from "../../../../features/ShareRoom/page/carousel";

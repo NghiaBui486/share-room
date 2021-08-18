@@ -1,15 +1,13 @@
 import React,{ useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
-import { Row, Col, Card, Space,Avatar } from 'antd';
+import { Row, Col, Card, Space, Avatar } from 'antd';
 import roomInfoApi from "../../../../api/roomInfoApi";
 
 const { Meta } = Card;
 
 function AppNews() {
-
 const history= useHistory();
 const [data,setData]=useState([]);
-
 const getData=()=>{
   roomInfoApi.getAll().then((res) => {setData(res)})
 }
@@ -50,9 +48,7 @@ const handleRoomDetail = id => {
           <h2>Phòng trọ mới nhất</h2>
         </div>
         <Row gutter={[16, 16]}>
-
-        {
-          
+        {         
           news.map(room => {
           return (
             <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>

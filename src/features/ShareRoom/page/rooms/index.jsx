@@ -1,9 +1,7 @@
 import React,{ useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
-
 import Filter from "../../../../features/ShareRoom/page/filter";
 import roomInfoApi from "../../../../api/roomInfoApi";
-
 import { Row, Col, Card, Space, Avatar, Pagination } from 'antd';
 const { Meta } = Card;
 
@@ -16,15 +14,11 @@ const [type, setType] = useState('');
 const [address, setAddress] = useState('');
 const [cost, setCost] = useState('');
 const [check,setCheck] = useState(true);
-
-
 const [data,setData]=useState([]);
-
 const getData=()=>{
   roomInfoApi.getAll().then((res) => { setData(res)})
 }
 useEffect(()=>{getData();}, [])
-
 
 const checkPagination = value => {
     if (value <= 1) {
@@ -35,7 +29,6 @@ const checkPagination = value => {
         setMax(value*6)
     }
   };
-
 const handleRoomDetail = id => {
   localStorage.setItem("roomId", id)
   history.push(
@@ -44,7 +37,6 @@ const handleRoomDetail = id => {
     }
   )
 }
-
 const getNews = () => {
     return (
     data.slice(minValue, maxValue).map(room => {
@@ -73,7 +65,6 @@ const getNews = () => {
     );
   }
 
-
   let minCost;
   let maxCost;
   const getCost=()=>{
@@ -89,15 +80,13 @@ const getNews = () => {
       minCost=1;
       maxCost=2;
     }
-  }
- 
+  };
   const callDataFromFilter = (itemType, itemAddress, itemPrice) => {
    setType(itemType); 
    setAddress(itemAddress);
    setCost(itemPrice);
    setCheck(false);
-  }
-
+  };
   const getFilter = () => {
     let roomFilter=[];
    getCost();
@@ -138,11 +127,8 @@ const getNews = () => {
         <p style={{textAlign:"center"}}> Not found data</p>
       );
     }
-
-  }
-
+  };
   return (
-    
     <div id="feature" className="block featureBlock bgGray">
       <div className="container-fluid">
         <div className="titleHolder">

@@ -1,8 +1,7 @@
 import React, { useEffect,useState } from "react";
 import { Select, Button, Row, Col, Space} from 'antd';
-import { FilterOutlined, } from '@ant-design/icons';
+import { FilterOutlined } from '@ant-design/icons';
 import './../../index.scss';
-  
 
 const { Option, OptGroup } = Select;
 
