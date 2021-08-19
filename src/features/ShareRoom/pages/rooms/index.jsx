@@ -1,6 +1,6 @@
 import React,{ useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
-import Filter from "../../../../features/ShareRoom/page/filter";
+import Filter from "../filter";
 import roomInfoApi from "../../../../api/roomInfoApi";
 import { Row, Col, Card, Space, Avatar, Pagination } from 'antd';
 const { Meta } = Card;
@@ -39,12 +39,13 @@ const handleRoomDetail = id => {
   )
 }
 const getNews = () => {
+  return(
     data.slice(minValue, maxValue).map(room => {
       return (
         <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
         <Card
           hoverable
-          cover={<img alt="Modern Design" src={room.files[1].url} 
+          cover={<img alt="Modern Design" src={room.files[0].url} 
           />}
           onClick={() => handleRoomDetail(room.roomId)}
           >
@@ -52,7 +53,7 @@ const getNews = () => {
           <Meta title={room.title} />  
           <p style={{color:"#7a7a52"}}>{room.acreage} m<sup>2</sup> 
           <span> - </span> 
-          <span style={{color:"#ff5c33"}}> {room.roomPrice} triệu/tháng </span>
+          <span style={{color:"#ff5c33"}}> {room.roomPrice} vnđ/tháng </span>
           </p> 
           {(() => {
             if ( room.user && room.user.avatarUrl) {
@@ -76,6 +77,7 @@ const getNews = () => {
       </Col>
       );
     })
+    );
   }
 
   let minCost;
@@ -147,7 +149,6 @@ const getNews = () => {
         <div className="titleHolder">
           <h2>Phòng trọ với giá tốt nhất</h2>
         </div>
-        <Space direction="vertical" size="large">
           <Filter passDataToRoom={callDataFromFilter}/>
           <Row gutter={[16, 16]}>
           {(() => {
@@ -164,12 +165,6 @@ const getNews = () => {
           </Row>
           <Row gutter={[16, 16]}>
             <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
-            </Col>
-            <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
-            </Col>
-            <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
-            </Col>
-            <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
               <Pagination
                defaultCurrent={1}
                pageSize={6} 
@@ -178,7 +173,6 @@ const getNews = () => {
               />
             </Col>
           </Row>
-        </Space>
       </div>
     </div>
   );

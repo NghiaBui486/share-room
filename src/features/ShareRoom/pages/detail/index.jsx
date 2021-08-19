@@ -1,14 +1,13 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-import { Layout, Row, Col, Space } from 'antd';
+import { Layout, Row, Col } from 'antd';
 
 import AppHeader from "../../../../components/Header";
 import AppFooter from "../../../../components/Footer";
-import AppCarousel from "../carousel"
+import AppCarousel from "../../components/carousel"
 import AppComment from "../comment"
 import AppDescribe from "../describe"
-import AppInforUser from "../inforUser"
-import AppState from "../state"
+import AppUserinfo from "../userinfo"
+import AppState  from "../state"
 import './../../index.scss';
 
 const { Header, Content, Footer } = Layout;
@@ -27,7 +26,7 @@ function DetailPage() {
             <AppDescribe/>
             </Col>
           <Col xs={{ span: 10 }} sm={{ span: 10 }} md={{ span: 10 }} >
-            <AppInforUser/>
+            <AppUserinfo/>
             <AppState/>
           </Col>
         </Row>

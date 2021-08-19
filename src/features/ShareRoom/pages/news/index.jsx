@@ -57,31 +57,8 @@ const handleRoomDetail = id => {
               cover={<img alt="Modern Design" src={room.files[0].url} 
               />}
               onClick={() => handleRoomDetail(room.roomId)}
-              >
-              <Space direction="vertical">
-              <Meta title={room.title} />  
-              <p style={{color:"#7a7a52"}}>{room.acreage} m<sup>2</sup> 
-              <span> - </span> 
-              <span style={{color:"#ff5c33"}}> {room.roomPrice} triệu/tháng </span>
-              </p> 
-              {(() => {
-            if ( room.user && room.user.avatarUrl) {
-              return (
-                <p>
-               <Avatar src={room.user.avatarUrl}></Avatar> &ensp;
-               <span> {room.user.name}</span> 
-               </p>
-              )
-            } else {
-              return (
-                <p>
-                <Avatar src={"https://bom.to/Xa9VU0eQK352ql"}></Avatar> &ensp;
-                <span> {room.user.name}</span> 
-                </p>
-              )
-            }
-          })()}
-              </Space>          
+              >              
+              <Meta title={room.title} style={{textAlign:"center"}}/>           
             </Card>
           </Col>
           );

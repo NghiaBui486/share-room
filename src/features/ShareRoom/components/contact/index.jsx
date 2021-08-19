@@ -8,8 +8,8 @@ function AppContact() {
     <div id="contact" className="block contactBlock">
       <div className="container-fluid">
         <div className="titleHolder">
-          <h2>Get in Touch</h2>
-          <p>Dolore nam rerum obcaecati fugit odio nobis Molestiae rerum</p>
+          <h2>Liên lạc</h2>
+          <p>Vui lòng để lại phản hồi bên dưới</p>
         </div>
         <Form
           name="normal_login"
@@ -66,7 +66,7 @@ function AppContact() {
                 { validator:(_, value) => value ? Promise.resolve() : Promise.reject('Should accept agreement') },
               ]}
             >
-              <Checkbox>I agree with terms and conditions.</Checkbox>
+              <Checkbox>Tôi đồng ý với các điều khoản và điều kiện.</Checkbox>
             </Form.Item>
           </Form.Item>
           <Form.Item>

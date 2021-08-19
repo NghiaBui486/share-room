@@ -8,7 +8,7 @@ import Register from "./features/Register";
 import UserLogout from "./features/Logout";
 import AdminDashboard from "./features/AdminDashboard";
 import NotFound from "./components/NotFound";
-import DetailRoom from "./features/ShareRoom/detail/main/index.jsx"
+import DetailRoom from "./features/ShareRoom/pages/detail"
 
 //Lazy loading
 const ShareRoom = React.lazy(() => import("./features/ShareRoom"));

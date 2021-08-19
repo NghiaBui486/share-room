@@ -1,10 +1,11 @@
+import { Col } from "antd";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-function StateApp(){
+function UserinfoApp(){
     return (
-        <h>State</h>
+        <h>getInfo</h>
 
     );
 }
-export  default StateApp;
+export  default UserinfoApp;
