@@ -39,13 +39,12 @@ const handleRoomDetail = id => {
   )
 }
 const getNews = () => {
-    return (
     data.slice(minValue, maxValue).map(room => {
       return (
         <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
         <Card
           hoverable
-          cover={<img alt="Modern Design" src={room.image_url} 
+          cover={<img alt="Modern Design" src={room.files[1].url} 
           />}
           onClick={() => handleRoomDetail(room.roomId)}
           >
@@ -55,15 +54,28 @@ const getNews = () => {
           <span> - </span> 
           <span style={{color:"#ff5c33"}}> {room.roomPrice} triệu/tháng </span>
           </p> 
-          <p><Avatar src={room.user.avatarUrl}></Avatar> &ensp;
-          <span> {room.user.name}</span> 
-          </p>
+          {(() => {
+            if ( room.user && room.user.avatarUrl) {
+              return (
+                <p>
+               <Avatar src={room.user.avatarUrl}></Avatar> &ensp;
+               <span> {room.user.name}</span> 
+               </p>
+              )
+            } else {
+              return (
+                <p>
+                <Avatar src={"https://bom.to/Xa9VU0eQK352ql"}></Avatar> &ensp;
+                <span> {room.user.name}</span> 
+                </p>
+              )
+            }
+          })()}
           </Space>          
         </Card>
       </Col>
       );
     })
-    );
   }
 
   let minCost;
@@ -103,7 +115,7 @@ const getNews = () => {
          <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
          <Card
            hoverable
-           cover={<img alt="Modern Design" src={room.image_url} 
+           cover={<img alt="Modern Design" src={room.files[0].url} 
            />}
            onClick={() => handleRoomDetail(room.roomId)}
            >
