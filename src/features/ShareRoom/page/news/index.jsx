@@ -54,7 +54,7 @@ const handleRoomDetail = id => {
             <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
             <Card
               hoverable
-              cover={<img alt="Modern Design" src={room.files[1].url} 
+              cover={<img alt="Modern Design" src={room.files[0].url} 
               />}
               onClick={() => handleRoomDetail(room.roomId)}
               >
