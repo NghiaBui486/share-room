@@ -15,6 +15,7 @@ const [address, setAddress] = useState('');
 const [cost, setCost] = useState('');
 const [check,setCheck] = useState(true);
 const [data,setData]=useState([]);
+
 const getData=()=>{
   roomInfoApi.getAll().then((res) => { setData(res)})
 }

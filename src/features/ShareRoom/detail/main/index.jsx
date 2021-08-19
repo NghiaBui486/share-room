@@ -4,11 +4,12 @@ import { Layout, Row, Col, Space } from 'antd';
 
 import AppHeader from "../../../../components/Header";
 import AppFooter from "../../../../components/Footer";
-import AppCarousel from "../../../../features/ShareRoom/detail/carousel"
-import AppComment from "../../../../features/ShareRoom/detail/comment"
-import AppDescribe from "../../../../features/ShareRoom/detail/describe"
-import AppInforUser from "../../../../features/ShareRoom/detail/inforUser"
-import AppState from "../../../../features/ShareRoom/detail/state"
+import AppCarousel from "../carousel"
+import AppComment from "../comment"
+import AppDescribe from "../describe"
+import AppInforUser from "../inforUser"
+import AppState from "../state"
+import './../../index.scss';
 
 const { Header, Content, Footer } = Layout;
 
@@ -30,7 +31,6 @@ function DetailPage() {
             <AppState/>
           </Col>
         </Row>
-
         <Row  gutter={[16, 16]}>
             <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 22}} > 
               <AppComment/>
