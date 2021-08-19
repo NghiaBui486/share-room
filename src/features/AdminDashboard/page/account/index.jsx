@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import Title from "../title";
+import Title from "../../components/title";
 import Search from "./search"
 import Table from "./table";
 import "./index.scss";

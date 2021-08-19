@@ -39,12 +39,13 @@ const handleRoomDetail = id => {
   )
 }
 const getNews = () => {
+  return(
     data.slice(minValue, maxValue).map(room => {
       return (
         <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
         <Card
           hoverable
-          cover={<img alt="Modern Design" src={room.files[1].url} 
+          cover={<img height="200px" alt="Modern Design" src={room.files[0].url} 
           />}
           onClick={() => handleRoomDetail(room.roomId)}
           >
@@ -76,6 +77,7 @@ const getNews = () => {
       </Col>
       );
     })
+    );
   }
 
   let minCost;
@@ -147,7 +149,6 @@ const getNews = () => {
         <div className="titleHolder">
           <h2>Phòng trọ với giá tốt nhất</h2>
         </div>
-        <Space direction="vertical" size="large">
           <Filter passDataToRoom={callDataFromFilter}/>
           <Row gutter={[16, 16]}>
           {(() => {
@@ -178,7 +179,6 @@ const getNews = () => {
               />
             </Col>
           </Row>
-        </Space>
       </div>
     </div>
   );
