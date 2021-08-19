@@ -7,7 +7,7 @@ const { Option, OptGroup } = Select;
 
   function Filter({ passDataToRoom }) {
     const [itemType, setType] = useState("Room");
-    const [itemAddress, setAddress] = useState("Bình Định");
+    const [itemAddress, setAddress] = useState("Hà Nội");
     const [itemPrice, setPrice] = useState("type2");
     const checkType = (value) => {
         if (value!= undefined) {
@@ -22,7 +22,7 @@ const { Option, OptGroup } = Select;
             setAddress(value);
         }
         else {
-            setAddress("Bình Định");
+            setAddress("Hà Nội");
         }
        };
     const checkPrice = (value) => {

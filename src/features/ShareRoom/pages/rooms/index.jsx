@@ -2,6 +2,7 @@ import React,{ useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import Filter from "../filter";
 import roomInfoApi from "../../../../api/roomInfoApi";
+import addressApi from "../../../../api/address";
 import { Row, Col, Card, Space, Avatar, Pagination } from 'antd';
 const { Meta } = Card;
 
@@ -15,11 +16,19 @@ const [address, setAddress] = useState('');
 const [cost, setCost] = useState('');
 const [check,setCheck] = useState(true);
 const [data,setData]=useState([]);
+const [province,setProvince]= useState([]);
 
 const getData=()=>{
   roomInfoApi.getAll().then((res) => { setData(res)})
 }
-useEffect(()=>{getData();}, [])
+
+const getProvince=() =>{
+  addressApi.getAllProvince().then((res)=>{ setProvince(res)})
+}
+useEffect(()=>{
+  getData();
+  getProvince();
+}, []);
 
 const checkPagination = value => {
     if (value <= 1) {
@@ -84,16 +93,16 @@ const getNews = () => {
   let maxCost;
   const getCost=()=>{
     if (cost== "type1") {
-      minCost=3;
-      maxCost=5;
+      minCost=3000000;
+      maxCost=5000000;
     }
     else if (cost == "type2") {
-      minCost=2;
-      maxCost=3;
+      minCost=2000000;
+      maxCost=3000000;
     }
     else{
-      minCost=1;
-      maxCost=2;
+      minCost=1000000;
+      maxCost=2000000;
     }
   };
   const callDataFromFilter = (itemType, itemAddress, itemPrice) => {
@@ -103,10 +112,11 @@ const getNews = () => {
    setCheck(false);
   };
   const getFilter = () => {
-    let roomFilter=[];
+    console.log(type,address)
+   let roomFilter=[];
    getCost();
    for (let i = 0; i < data.length; i++) {
-     if ((data[i].roomType == type) && (data[i].address == address) && (data[i].roomPrice >= minCost) && (data[i].roomPrice <= maxCost) ) {
+     if ((data[i].roomType == type) && ((province[i].name == address) && (province[i].provinceId == data[i].provinceId)) && (data[i].roomPrice >= minCost) && (data[i].roomPrice <= maxCost) ) {
        roomFilter.push(data[i]);
      }
      }
