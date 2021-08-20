@@ -4,13 +4,14 @@ import Filter from "../filter";
 import roomInfoApi from "../../../../api/roomInfoApi";
 import addressApi from "../../../../api/address";
 import { Row, Col, Card, Space, Avatar, Pagination } from 'antd';
+import addressApi from "../../../../api/address";
 const { Meta } = Card;
 
 function AppRooms() {
  
 const history= useHistory();
 const [minValue, setMin] = useState(0);
-const [maxValue, setMax] = useState(6);
+const [maxValue, setMax] = useState(3);
 const [type, setType] = useState('');
 const [address, setAddress] = useState('');
 const [cost, setCost] = useState('');
@@ -21,7 +22,7 @@ const [province,setProvince]= useState([]);
 const getData=()=>{
   roomInfoApi.getAll().then((res) => { setData(res)})
 }
-
+useEffect(()=>{getData();}, [])
 const getProvince=() =>{
   addressApi.getAllProvince().then((res)=>{ setProvince(res)})
 }
@@ -33,17 +34,17 @@ useEffect(()=>{
 const checkPagination = value => {
     if (value <= 1) {
         setMin(0)
-        setMax(6)
+        setMax(3)
     } else {
         setMin(maxValue)
-        setMax(value*6)
+        setMax(value*3)
     }
   };
 const handleRoomDetail = id => {
   localStorage.setItem("roomId", id)
   history.push(
     {
-      pathname : '/room/'+id
+      pathname : '/room-detail/?room-id='+id
     }
   )
 }
@@ -51,14 +52,13 @@ const getNews = () => {
   return(
     data.slice(minValue, maxValue).map(room => {
       return (
-        <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
+        <Col style={{marginTop: 10, marginBottom: 10}} xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
         <Card
           hoverable
-          cover={<img alt="Modern Design" src={room.files[0].url} 
+          cover={<img style={{height: 300}} alt="Modern Design" src={room.files[0].url} 
           />}
           onClick={() => handleRoomDetail(room.roomId)}
           >
-          <Space direction="vertical">
           <Meta title={room.title} />  
           <p style={{color:"#7a7a52"}}>{room.acreage} m<sup>2</sup> 
           <span> - </span> 
@@ -80,8 +80,7 @@ const getNews = () => {
                 </p>
               )
             }
-          })()}
-          </Space>          
+          })()}        
         </Card>
       </Col>
       );
@@ -97,8 +96,8 @@ const getNews = () => {
       maxCost=5000000;
     }
     else if (cost == "type2") {
-      minCost=2000000;
-      maxCost=3000000;
+      minCost=1000000;
+      maxCost=2000000;
     }
     else{
       minCost=1000000;
@@ -112,14 +111,14 @@ const getNews = () => {
    setCheck(false);
   };
   const getFilter = () => {
-    console.log(type,address)
-   let roomFilter=[];
+    let roomFilter=[];
+    console.log(province)
    getCost();
    for (let i = 0; i < data.length; i++) {
-     if ((data[i].roomType == type) && ((province[i].name == address) && (province[i].provinceId == data[i].provinceId)) && (data[i].roomPrice >= minCost) && (data[i].roomPrice <= maxCost) ) {
-       roomFilter.push(data[i]);
-     }
-     }
+    if ((data[i].roomType == type) && ((province[i].name == address) && (province[i].provinceId == data[i].provinceId)) && (data[i].roomPrice >= minCost) && (data[i].roomPrice <= maxCost) ) {
+      roomFilter.push(data[i]);
+    }
+    }
    if(roomFilter.length>0) {
    return (
      roomFilter.slice(minValue, maxValue).map(room => {
@@ -177,9 +176,9 @@ const getNews = () => {
             <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
               <Pagination
                defaultCurrent={1}
-               pageSize={6} 
+               pageSize={2} 
                onChange={checkPagination}
-               total={10}             
+               total={3}             
               />
             </Col>
           </Row>

@@ -18,7 +18,7 @@ const roomInfoApi = {
     });
   },
   getInfoRoom: (id) => {
-    const url = '/room/${id}';
+    const url = `/room/${id}`;
     return axiosClient.get(url, {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token'),

@@ -26,7 +26,6 @@ function SideBar(props) {
         theme="dark"
         mode="inline"
         selectable={false}
-        defaultOpenKeys={["acc", "room", "evaluate"]}
       >
         <SubMenu key="acc" icon={<UserOutlined />} title="Tài khoản">
           <Menu.Item key="accUser">

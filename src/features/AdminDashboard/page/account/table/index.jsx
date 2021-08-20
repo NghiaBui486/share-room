@@ -237,7 +237,7 @@ const TableAccount = forwardRef((props, ref) => {
           columns={columns}
           dataSource={data}
           scroll={{ y: 280 }}
-          pagination={{ defaultPageSize: 5 }}
+          pagination={{ defaultPageSize: 1 }}
         />
       </Col>
       <Modal

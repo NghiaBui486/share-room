@@ -1,13 +1,20 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { BackTop } from 'antd';
 
 function Footer() {
+  let history = useHistory();
   return (
     <div className="container-fluid">
       <div className="footer">
-        <div className="logo">
+      <div
+          className="logo"
+          onClick={() => {
+            history.push("/");
+          }}
+        >
           <i className="fas fa-bolt"></i>
-          <a href="http://google.com">Phòng trọ nhanh cho sinh viên</a>
+          <a>Phòng trọ nhanh cho sinh viên</a>
         </div>
         <ul className="socials">
           <li><a href="https://www.facebook.com/"><i className="fab fa-facebook-f"></i></a></li>

@@ -2,8 +2,8 @@ import React from "react";
 import { Route, Switch, useRouteMatch, Redirect } from "react-router-dom";
 import NotFound from "../../components/NotFound";
 import MainPage from "./page/main";
-import Account from "./components/account";
-import Room from "./components/room";
+import Account from "./page/account";
+import Room from "./page/room";
 
 import "./index.scss";
 

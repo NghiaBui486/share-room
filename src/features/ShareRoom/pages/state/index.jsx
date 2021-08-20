@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function StateApp(){
     return (
-        <h>getInfo</h>
+        <h>Room-Sharing</h>
 
     );
 }

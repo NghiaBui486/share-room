@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function UserinfoApp(){
     return (
-        <h>getInfo</h>
+        <h>User-Info</h>
 
     );
 }

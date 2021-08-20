@@ -1,17 +1,30 @@
 import { Col } from "antd";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import iconMap from '../../../../assets/images/mapIcon.png';
 import ShowMoreText from "react-show-more-text";
+import roomInfoApi from "../../../../api/roomInfoApi";
 
 function DescribeApp(){
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const [data, setData] = useState([]);
+  const [address, setAddress] = useState();
+  useEffect(() => {
+    const roomId = urlParams.get('room-id');
+    roomInfoApi.getInfoRoom(roomId).then((res) => {
+      setData(res);
+    })
+  }, [])
     return (
         <div className="content-describe">
         <Col offset={3}>
-        <h><b>Phòng trọ ABC</b></h>
-        <span className="dateTime-create">Ngày đăng</span>
-        <p style={{color:"red"}}><span>15 triệu/tháng</span> 
-        <span> - </span>
-        <span> 40  m<sup>2</sup> </span></p>
+        <h><b>{data.title}</b></h>
+        <span className="dateTime-create">{data.date}</span>
+        <p style={{color:"red"}}>
+          <span>{data.roomPrice} triệu/tháng</span>
+          <br />
+          <span>Diện tích: {data.acreage} m<sup>2</sup></span>
+        </p>
         <p> <img src={iconMap} /> 
            <span> Đường xyz, Thành phố Hồ Chí Minh</span>
         </p>
@@ -27,15 +40,7 @@ function DescribeApp(){
                 width={650}
                 truncatedEndingComponent={"... "}
             >
-                Lorem ipsum dolor sit amet, consectetu Labore et dolore magna amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                {data.roomDescribe}
             </ShowMoreText>
         </div>
         </Col>

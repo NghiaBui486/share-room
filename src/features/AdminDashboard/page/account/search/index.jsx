@@ -171,10 +171,6 @@ function Search(props) {
                       required: true,
                       message: "Mật khẩu không được để trống",
                     },
-                    {
-                      pattern: new RegExp(/^[a-zA-Z0-9]+$/i),
-                      message: "Mật khẩu không chứa kí tự đặc biệt",
-                    },
                   ]}
                   hasFeedback
                 >
@@ -182,7 +178,7 @@ function Search(props) {
                     onChange={(e) => {
                       setPassword(e.target.value);
                     }}
-                    placeholder="Mật khẩu"
+                    placeholder="Mật khẩu (Ex: User123@)"
                   />
                 </Form.Item>
                 <Form.Item
@@ -193,10 +189,6 @@ function Search(props) {
                     {
                       required: true,
                       message: "Mật khẩu không được để trống",
-                    },
-                    {
-                      pattern: new RegExp(/^[a-zA-Z0-9]+$/i),
-                      message: "Mật khẩu không chứa kí tự đặc biệt",
                     },
                     ({ getFieldValue }) => ({
                       validator(_, value) {

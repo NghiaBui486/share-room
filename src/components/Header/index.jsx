@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link as LinkRouter } from "react-router-dom";
+import { Link as LinkRouter, useHistory } from "react-router-dom";
 import {
   Anchor,
   Drawer,
@@ -19,19 +19,28 @@ import roomInfoApi from "../../api/roomInfoApi";
 import { storage } from "../../features/AdminDashboard/fireBase";
 
 function Header() {
+  let history = useHistory();
   const formRef = useRef();
   const { Link } = Anchor;
   const { Option } = Select;
   const [form] = Form.useForm();
   const [visible, setVisible] = useState(false);
   const [visibleDrawer, setVisibleDrawer] = useState(false);
-  const [address, setAddress] = useState([]);
+  const [province, setProvince] = useState([]);
+  const [district, setDistrict] = useState([]);
+  const [ward, setWard] = useState([]);
   const [listUrl, setListUrl] = useState([]);
   useEffect(() => {
     addressApi
       .getAllProvince()
       .then((res) => {
-        setAddress(res);
+        setProvince(res);
+        addressApi.getAllDistrict().then((res) => {
+          setDistrict(res);
+          addressApi.getAllWard().then((res) => {
+            setWard(res);
+          });
+        });
       })
       .catch(() => {
         console.log("ERROR");
@@ -170,7 +179,7 @@ function Header() {
                     rules={[{ required: true, message: "Chọn tỉnh" }]}
                   >
                     <Select placeholder="Chọn tỉnh">
-                      {address.map((items) => {
+                      {province.map((items) => {
                         return (
                           <Option value={items.provinceId}>{items.name}</Option>
                         );
@@ -187,11 +196,11 @@ function Header() {
                     rules={[{ required: true, message: "Chọn huyện" }]}
                   >
                     <Select placeholder="Chọn huyện">
-                      {address.map((items) =>
-                        items.listDistrict.map((e) => {
-                          return <Option value={e.districtId}>{e.name}</Option>;
-                        })
-                      )}
+                      {district.map((items) => {
+                        return (
+                          <Option value={items.districtId}>{items.name}</Option>
+                        );
+                      })}
                     </Select>
                   </Form.Item>
                 </Col>
@@ -202,13 +211,9 @@ function Header() {
                     rules={[{ required: true, message: "Chọn xã" }]}
                   >
                     <Select placeholder="Chọn xã">
-                      {address.map((items) =>
-                        items.listDistrict.map((e) =>
-                          e.listWard.map((e) => {
-                            return <Option value={e.wardId}>{e.name}</Option>;
-                          })
-                        )
-                      )}
+                      {ward.map((items) => {
+                        return <Option value={items.wardId}>{items.name}</Option>;
+                      })}
                     </Select>
                   </Form.Item>
                 </Col>
@@ -305,9 +310,14 @@ function Header() {
   return (
     <div className="container-fluid">
       <div className="header">
-        <div className="logo">
+        <div
+          className="logo"
+          onClick={() => {
+            history.push("/");
+          }}
+        >
           <i className="fas fa-bolt"></i>
-          <a href="http://google.com">Phòng trọ nhanh cho sinh viên</a>
+          <a>Phòng trọ nhanh cho sinh viên</a>
         </div>
 
         <div className="mobileHidden">

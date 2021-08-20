@@ -26,6 +26,10 @@ body {
   padding: 0;
   height: auto;
   line-height: 1.6;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 999;
 }
 
 p {
@@ -48,6 +52,17 @@ title holder
   margin: 0 0 40px;
 }
 
+.top_margin{
+  margin-top: 40px;
+}
+
+.carousel{
+  text-align: center;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
 .titleHolder:after {
   transform: translateX(-50%);
   content: '';
@@ -68,12 +83,12 @@ title holder
 header
 ------ 
 */
-.ant-layout-header {
-  position: fixed;
-  left: 0;
-  right: 0;
-  z-index: 999;
-}
+// .ant-layout-header {
+//   position: fixed;
+//   left: 0;
+//   right: 0;
+//   z-index: 999;
+// }
 
 .header {
   display: flex;

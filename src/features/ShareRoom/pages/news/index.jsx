@@ -37,7 +37,7 @@ const handleRoomDetail = id => {
   localStorage.setItem("roomId", id)
   history.push(
     {
-      pathname : '/room/'+id
+      pathname : '/room-detail/?room-id=' + id
     }
   )
 }
@@ -54,7 +54,7 @@ const handleRoomDetail = id => {
             <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
             <Card
               hoverable
-              cover={<img alt="Modern Design" src={room.files[0].url} 
+              cover={<img style={{height: 300}} alt="Modern Design" src={room.files[0].url} 
               />}
               onClick={() => handleRoomDetail(room.roomId)}
               >              
